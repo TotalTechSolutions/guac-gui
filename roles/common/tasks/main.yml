@@ -1,0 +1,45 @@
+# Update repositories cache and install tomcat7 package
+- apt: name=tomcat7 update_cache=yes
+
+# libcairo2-dev
+- apt: name=libcairo2-dev
+
+# libpng12-dev
+- apt: name=libpng12-dev
+
+# libossp-uuid-dev
+- apt: name=libossp-uuid-dev
+
+# libfreerdp-dev
+- apt: name=libfreerdp-dev
+
+# libpango1.0-dev
+- apt: name=libpango1.0-dev
+
+# libssh2-1-dev
+- apt: name=libssh2-1-dev
+
+# libvncserver-dev
+- apt: name=libvncserver-dev
+
+# libpulse-dev 
+- apt: name=libpulse-dev 
+
+# libssl-dev
+- apt: name=libssl-dev
+
+# libvorbis-dev
+- apt: name=libvorbis-dev
+
+# copying old sources.list
+- copy: src=/etc/apt/sources.list dest=/etc/apt/sources.list.orig
+
+# Add a line to a sources.list
+- lineinfile: dest=/etc/apt/sources.list line="deb http://100.64.1.11/ubuntu trusty universe"
+
+# Add a line to a sources.list
+- lineinfile: dest=/etc/apt/sources.list line="deb-src http://100.64.1.11/ubuntu trusty universe"
+
+# Update repositories cache and install tomcat7 package
+- apt: name=libtelnet-dev update_cache=yes
+
