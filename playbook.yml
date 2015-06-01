@@ -1,21 +1,6 @@
 ---
-- hosts: spine
-  user: root
+- hosts: workbench
+  remote_user: wbench218
   roles:
     - common
-    - ospfunnum
-  vars_files:
-    - roles/ospfunnum/vars/main-2lt22s.yml
-  handlers:
-    - include: handlers/main.yml
 
-- hosts: leaf
-  user: root
-  roles:
-    - common
-    - portsconfig
-    - ospfunnum
-  vars_files:
-    - roles/ospfunnum/vars/main-2lt22s.yml
-  handlers:
-    - include : handlers/main.yml

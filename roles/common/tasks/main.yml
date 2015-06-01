@@ -40,6 +40,32 @@
 # Add a line to a sources.list
 - lineinfile: dest=/etc/apt/sources.list line="deb-src http://100.64.1.11/ubuntu trusty universe"
 
-# Update repositories cache and install tomcat7 package
+# Update repositories cache and install libtelnet-dev package
 - apt: name=libtelnet-dev update_cache=yes
 
+# revert to original sources.list
+- copy: src=/etc/apt/sources.list.orig dest==/etc/apt/sources.list
+
+# Run the equivalent of "apt-get update" as a separate step
+- apt: update_cache=yes
+
+- name: download file with sha256 check
+  get_url: url=https://github.com/seanx820/guac-cum/blob/master/guacamole_install.tar.gz?raw=true dest=/home/cumulus/guacamole_install.tar.gz
+  
+# gunzip
+- command: gunzip /home/cumulus/guacamole_install.tar.gz
+
+# tar
+- command: tar -xvf /home/cumulus/guacamole_install.tar -C /
+
+- name: Creates directory
+  file: path=/usr/share/tomcat7/.guacamole state=directory
+  
+- name: Create symlink to example.com
+  file: src=/etc/guacamole/guacamole.properties dest=/usr/share/tomcat7/.guacamole/ state=link
+
+# Example action to restart service httpd, in all cases
+- service: name=tomcat7 state=restarted
+
+# Example action to restart service httpd, in all cases
+- service: name=guacd state=restarted
