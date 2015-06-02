@@ -1,6 +1,7 @@
 ---
 - hosts: workbench
   remote_user: cumulus
+  sudo: yes
   roles:
     - common
 
