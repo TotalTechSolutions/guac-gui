@@ -31,32 +31,20 @@
 # libvorbis-dev
 - apt: name=libvorbis-dev
 
-# copying old sources.list
-- command: cp /etc/apt/sources.list /etc/apt/sources.list.orig
- 
-# Add a line to a sources.list
-- lineinfile: dest=/etc/apt/sources.list line="deb http://100.64.1.11/ubuntu trusty universe" create=yes
-
-# Add a line to a sources.list
-- lineinfile: dest=/etc/apt/sources.list line="deb-src http://100.64.1.11/ubuntu trusty universe" insertafter=EOF
-
 # Update repositories cache and install libtelnet-dev package
 - apt: name=libtelnet-dev update_cache=yes
-
-# revert to original sources.list
-- command: mv /etc/apt/sources.list.orig /etc/apt/sources.list
 
 # Run the equivalent of "apt-get update" as a separate step
 - apt: update_cache=yes
 
 - name: download file with sha256 check
-  get_url: url=https://github.com/seanx820/guac-cum/blob/master/guacamole_install.tar.gz?raw=true dest=/home/cumulus/guacamole_install.tar.gz
+  get_url: url=https://github.com/seanx820/guac-cum/blob/master/guacamole_install.tar.gz?raw=true dest=/root/guacamole_install.tar.gz
   
 # gunzip
-- command: gunzip -f /home/cumulus/guacamole_install.tar.gz
+- command: gunzip -f /root/guacamole_install.tar.gz
 
 # tar
-- command: tar -xvf /home/cumulus/guacamole_install.tar -C /
+- command: tar -xvf /root/guacamole_install.tar -C /
 
 - name: Creates directory
   file: path=/usr/share/tomcat7/.guacamole state=directory

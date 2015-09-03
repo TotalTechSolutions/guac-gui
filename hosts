@@ -1,6 +1,0 @@
-[workbench]
-#wbench201 ansible_ssh_user=cumulus ansible_ssh_host=workbench.cumulusnetworks.com ansible_ssh_port=7201 ansible_ssh_pass=xu3g9mrk
-#wbench202 ansible_ssh_user=cumulus ansible_ssh_host=workbench.cumulusnetworks.com ansible_ssh_port=7202 ansible_ssh_pass=h5sqvw5j
-#wbench205 ansible_ssh_user=cumulus ansible_ssh_host=workbench.cumulusnetworks.com ansible_ssh_port=7205 ansible_ssh_pass=bce3psrh
-#wbench206 ansible_ssh_user=cumulus ansible_ssh_host=workbench.cumulusnetworks.com ansible_ssh_port=7206 ansible_ssh_pass=zw22ggag
-mgmt-vm ansible_ssh_user=cumulus ansible_ssh_host=192.168.2.237 ansible_ssh_pass=cn321 ansible_sudo_pass=cn321
